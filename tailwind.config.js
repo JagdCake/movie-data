@@ -1,5 +1,10 @@
 module.exports = {
     theme: {
+        colors: {
+            gray: '#EEF0F5',
+            purple: '#221522',
+            yellow: '#ffed66',
+        },
         extend: {},
     },
     variants: {},

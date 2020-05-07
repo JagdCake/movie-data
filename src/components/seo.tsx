@@ -84,6 +84,9 @@ const SEO: FunctionComponent<SeoProps> = ({
                     content: metaDescription,
                 },
             ].concat(meta)}
+            bodyAttributes={{
+                class: 'bg-gray',
+            }}
         />
     );
 };

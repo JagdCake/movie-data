@@ -36,16 +36,6 @@ const Layout: FunctionComponent<LayoutProps> = ({
             <Header siteTitle={data.site.siteMetadata.title} />
             <div className="mx-auto px-4">
                 <main>{children}</main>
-                <footer>
-                    © {new Date().getFullYear()}, Built with
-                    {` `}
-                    <a
-                        className="underline text-blue-500"
-                        href="https://www.gatsbyjs.org"
-                    >
-                        Gatsby
-                    </a>
-                </footer>
             </div>
         </>
     );

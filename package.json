@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-typescript-tailwind-starter",
+  "name": "movie-data",
   "private": true,
-  "description": "The default Gatsby starter modified for use with TypeScript and Tailwind CSS",
+  "description": "Displays information generated using movie data from https://movies.jagdcake.com",
   "version": "0.1.0",
   "author": "Ivo Angelov <jc@jagdcake.com>",
   "dependencies": {
@@ -59,9 +59,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jagdcake/gatsby-typescript-tailwind-starter"
+    "url": "https://github.com/jagdcake/movie-data"
   },
   "bugs": {
-    "url": "https://github.com/jagdcake/gatsby-typescript-tailwind-starter/issues"
+    "url": "https://github.com/jagdcake/movie-data/issues"
   }
 }

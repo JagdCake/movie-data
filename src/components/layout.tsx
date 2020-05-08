@@ -34,7 +34,7 @@ const Layout: FunctionComponent<LayoutProps> = ({
     return (
         <>
             <Header siteTitle={data.site.siteMetadata.title} />
-            <div className="mx-auto px-4">
+            <div className="mx-auto px-3">
                 <main>{children}</main>
             </div>
         </>

@@ -67,7 +67,7 @@ const Time: FunctionComponent<TimeProp> = ({
 }: TimeProp): ReactElement => {
     return (
         <time
-            dateTime={date}
+            dateTime={isoDate(date)}
             className="p-1 bg-purple text-gray rounded-sm"
         >
             {date}

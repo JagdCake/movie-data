@@ -122,6 +122,11 @@ const TimeSpent: FunctionComponent<TimeSpentProps> = ({
     untilDate,
     numberOfMoviesWatched,
 }: TimeSpentProps): ReactElement => {
+    const daysSinceFirstMovie = timeSpanInDays(
+        isoDate(fromDate),
+        isoDate(untilDate)
+    );
+
     return (
         <InfoCard id="time-spent">
             <section>
@@ -140,7 +145,7 @@ const TimeSpent: FunctionComponent<TimeSpentProps> = ({
             <section className="mt-4 pt-4 border-t-2 border-dashed">
                 <p>
                     <span>Out of </span>
-                    <Days numberOfDays="1298" />
+                    <Days numberOfDays={daysSinceFirstMovie} />
                     <span> days, I&apos;ve spent </span>
                     <Days numberOfDays="55" />
                     <span> watching films. That&apos;s </span>

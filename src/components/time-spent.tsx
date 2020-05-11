@@ -80,6 +80,17 @@ interface DaysProp {
     numberOfDays: string;
 }
 
+const Days: FunctionComponent<DaysProp> = ({
+    numberOfDays,
+}: DaysProp): ReactElement => (
+    <time
+        dateTime={`${numberOfDays}d`}
+        className="p-1 bg-purple text-gray rounded-sm"
+    >
+        {numberOfDays}
+    </time>
+);
+
 interface TimeSpentProps {
     // first movie's "watched on" date
     fromDate: string;

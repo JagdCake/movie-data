@@ -91,6 +91,24 @@ const Days: FunctionComponent<DaysProp> = ({
     </time>
 );
 
+const timeSpanInDays: Function = (
+    firstDate: string,
+    secondDate: string
+): string => {
+    const firstDateInMilliseconds = new Date(firstDate).getTime();
+    const secondDateInMilliseconds = new Date(secondDate).getTime();
+
+    const spanInMilliseconds =
+        secondDateInMilliseconds - firstDateInMilliseconds;
+
+    const spanInSeconds = spanInMilliseconds / 1000;
+    const spanInMinutes = spanInSeconds / 60;
+    const spanInHours = spanInMinutes / 60;
+    const spanInDays = spanInHours / 24;
+
+    return spanInDays.toString();
+};
+
 interface TimeSpentProps {
     // first movie's "watched on" date
     fromDate: string;

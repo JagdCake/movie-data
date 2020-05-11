@@ -1,6 +1,7 @@
 import React from 'react';
 import { FunctionComponent } from 'react';
 import { ReactElement } from 'react';
+import InfoCard from './info-card';
 
 const isoMonth: Function = (monthName: string): string => {
     // the month name format is the same as in the database
@@ -82,3 +83,29 @@ interface TimeSpentProps {
     untilDate: string;
     numberOfMoviesWatched: string;
 }
+
+const TimeSpent: FunctionComponent<TimeSpentProps> = ({
+    fromDate,
+    untilDate,
+    numberOfMoviesWatched,
+}: TimeSpentProps): ReactElement => {
+    return (
+        <InfoCard id="time-spent">
+            <section>
+                <p>
+                    <span>From </span>
+                    <Time date={fromDate} />
+                    <span> until </span>
+                    <Time date={untilDate} />
+                    <span>, I&apos;ve watched </span>
+                    <strong className="p-1 bg-purple text-gray rounded-sm">
+                        {numberOfMoviesWatched} movies
+                    </strong>
+                    <span>.</span>
+                </p>
+            </section>
+        </InfoCard>
+    );
+};
+
+export default TimeSpent;

@@ -119,6 +119,19 @@ const TimeSpent: FunctionComponent<TimeSpentProps> = ({
                     <span>.</span>
                 </p>
             </section>
+            <section className="mt-4 pt-4 border-t-2 border-dashed">
+                <p>
+                    <span>Out of </span>
+                    <Days numberOfDays="1298" />
+                    <span> days, I&apos;ve spent </span>
+                    <Days numberOfDays="55" />
+                    <span> watching films. That&apos;s </span>
+                    <strong className="p-1 bg-purple text-gray rounded-sm">
+                        4.2%
+                    </strong>
+                    <span> of my time.</span>
+                </p>
+            </section>
         </InfoCard>
     );
 };

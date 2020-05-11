@@ -74,3 +74,11 @@ const Time: FunctionComponent<TimeProp> = ({
         </time>
     );
 };
+
+interface TimeSpentProps {
+    // first movie's "watched on" date
+    fromDate: string;
+    // last movie's "watched on" date
+    untilDate: string;
+    numberOfMoviesWatched: string;
+}

@@ -31,6 +31,14 @@ module.exports = {
         },
         `gatsby-plugin-typescript`,
         `gatsby-plugin-postcss`,
+        {
+            resolve: 'gatsby-source-pg',
+            options: {
+                connectionString: 'postgres:///movies',
+                schema: 'public',
+                refetchInterval: 86400, // Refetch data every 24 hours
+            },
+        },
         // this (optional) plugin enables Progressive Web App + Offline functionality
         // To learn more, visit: https://gatsby.dev/offline
         // `gatsby-plugin-offline`,

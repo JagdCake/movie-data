@@ -60,36 +60,23 @@ const isoDate: Function = (date: string): string => {
 };
 
 interface TimeProp {
-    date: string;
+    dateTime: string;
+    timeValue: string;
 }
 
 const Time: FunctionComponent<TimeProp> = ({
-    date,
+    dateTime,
+    timeValue,
 }: TimeProp): ReactElement => {
     return (
         <time
-            dateTime={isoDate(date)}
+            dateTime={dateTime}
             className="p-1 bg-purple text-gray rounded-sm"
         >
-            {date}
+            {timeValue}
         </time>
     );
 };
-
-interface DaysProp {
-    numberOfDays: string;
-}
-
-const Days: FunctionComponent<DaysProp> = ({
-    numberOfDays,
-}: DaysProp): ReactElement => (
-    <time
-        dateTime={`${numberOfDays}d`}
-        className="p-1 bg-purple text-gray rounded-sm"
-    >
-        {numberOfDays}
-    </time>
-);
 
 const timeSpanInDays: Function = (
     firstDate: string,
@@ -132,9 +119,9 @@ const TimeSpent: FunctionComponent<TimeSpentProps> = ({
             <section>
                 <p>
                     <span>From </span>
-                    <Time date={fromDate} />
+                    <Time dateTime={isoDate(fromDate)} timeValue={fromDate} />
                     <span> until </span>
-                    <Time date={untilDate} />
+                    <Time dateTime={isoDate(untilDate)} timeValue={untilDate} />
                     <span>, I&apos;ve watched </span>
                     <strong className="p-1 bg-purple text-gray rounded-sm">
                         {numberOfMoviesWatched} movies
@@ -145,9 +132,12 @@ const TimeSpent: FunctionComponent<TimeSpentProps> = ({
             <section className="mt-4 pt-4 border-t-2 border-dashed">
                 <p>
                     <span>Out of </span>
-                    <Days numberOfDays={daysSinceFirstMovie} />
+                    <Time
+                        dateTime={`${daysSinceFirstMovie}d`}
+                        timeValue={daysSinceFirstMovie}
+                    />
                     <span> days, I&apos;ve spent </span>
-                    <Days numberOfDays="55" />
+                    <Time dateTime="55d" timeValue="55" />
                     <span> watching films. That&apos;s </span>
                     <strong className="p-1 bg-purple text-gray rounded-sm">
                         4.2%

@@ -69,24 +69,6 @@ const Time: FunctionComponent<TimeProp> = ({
     );
 };
 
-const timeSpanInDays: Function = (
-    firstDate: string,
-    secondDate: string
-): string => {
-    const firstDateInMilliseconds = new Date(firstDate).getTime();
-    const secondDateInMilliseconds = new Date(secondDate).getTime();
-
-    const spanInMilliseconds =
-        secondDateInMilliseconds - firstDateInMilliseconds;
-
-    const spanInSeconds = spanInMilliseconds / 1000;
-    const spanInMinutes = spanInSeconds / 60;
-    const spanInHours = spanInMinutes / 60;
-    const spanInDays = spanInHours / 24;
-
-    return spanInDays.toString();
-};
-
 interface TimeSpentProps {
     // first movie's "watched on" date
     fromDate: string;
@@ -106,11 +88,6 @@ const TimeSpent: FunctionComponent<TimeSpentProps> = ({
     totalDaysSpentWatchingMovies,
     percentOfTimeSpentWatchingMovies,
 }: TimeSpentProps): ReactElement => {
-    const daysSinceFirstMovie = timeSpanInDays(
-        isoDate(fromDate),
-        isoDate(untilDate)
-    );
-
     return (
         <InfoCard id="time-spent">
             <section>
@@ -130,14 +107,17 @@ const TimeSpent: FunctionComponent<TimeSpentProps> = ({
                 <p>
                     <span>Out of </span>
                     <Time
-                        dateTime={`${daysSinceFirstMovie}d`}
-                        timeValue={daysSinceFirstMovie}
+                        dateTime={`${totalDaysSinceFirstMovie}d`}
+                        timeValue={totalDaysSinceFirstMovie}
                     />
                     <span> days, I&apos;ve spent </span>
-                    <Time dateTime="55d" timeValue="55" />
+                    <Time
+                        dateTime={`${totalDaysSpentWatchingMovies}d`}
+                        timeValue={totalDaysSpentWatchingMovies}
+                    />
                     <span> watching films. That&apos;s </span>
                     <strong className="p-1 bg-purple text-gray rounded-sm">
-                        4.2%
+                        {percentOfTimeSpentWatchingMovies}%
                     </strong>
                     <span> of my time.</span>
                 </p>

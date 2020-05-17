@@ -93,12 +93,18 @@ interface TimeSpentProps {
     // last movie's "watched on" date
     untilDate: string;
     numberOfMoviesWatched: string;
+    totalDaysSinceFirstMovie: string;
+    totalDaysSpentWatchingMovies: string;
+    percentOfTimeSpentWatchingMovies: string;
 }
 
 const TimeSpent: FunctionComponent<TimeSpentProps> = ({
     fromDate,
     untilDate,
     numberOfMoviesWatched,
+    totalDaysSinceFirstMovie,
+    totalDaysSpentWatchingMovies,
+    percentOfTimeSpentWatchingMovies,
 }: TimeSpentProps): ReactElement => {
     const daysSinceFirstMovie = timeSpanInDays(
         isoDate(fromDate),

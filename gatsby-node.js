@@ -95,5 +95,19 @@ exports.createPages = async ({ graphql, actions }) => {
                 });
             }
         });
+
+        const { createRedirect } = actions;
+
+        const pathToAllData = `${isoDate(
+            movieWatchedOnDateRanges[0]
+        )}_until_${isoDate(
+            movieWatchedOnDateRanges[movieWatchedOnDateRanges.length - 1]
+        )}`;
+        createRedirect({
+            fromPath: `/`,
+            toPath: pathToAllData,
+            redirectInBrowser: true,
+            isPermanent: true,
+        });
     });
 };

@@ -29,3 +29,12 @@ export const query = graphql`
         }
     }
 `;
+
+interface TimeSpentData {
+    numberOfMovies: number;
+    daysSinceFirstMovie: number;
+    daysSpentWatching: number;
+    percentOfTimeSpentWatching: number;
+    hoursSpentWatching: number;
+    remainingMinutesSpentWatching: number;
+}

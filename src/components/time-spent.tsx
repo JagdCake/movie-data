@@ -40,21 +40,12 @@ const isoMonth: Function = (monthName: string): string => {
 // function is meant to work only with dates that follow the format of
 // the "watched on" fields from the database
 const isoDate: Function = (date: string): string => {
-    const monthDayYear = date.split(' ');
+    const dayMonthYear = date.split(' ');
 
-    const year = monthDayYear[2];
-    const monthName = monthDayYear[0];
+    const year = dayMonthYear[2];
+    const monthName = dayMonthYear[1];
     const month = isoMonth(monthName);
-    const day = monthDayYear[1];
-
-    // some of the movies have "watched on" dates consisting only of a
-    // month name and a year
-    const dayIsActuallyYear = day.length === 4;
-
-    if (dayIsActuallyYear) {
-        const year = day;
-        return `${year}-${month}`;
-    }
+    const day = dayMonthYear[0];
 
     return `${year}-${month}-${day}`;
 };

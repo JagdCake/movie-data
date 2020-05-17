@@ -38,3 +38,14 @@ interface TimeSpentData {
     hoursSpentWatching: number;
     remainingMinutesSpentWatching: number;
 }
+
+interface MovieRangeDataProps {
+    data: {
+        postgres: {
+            timeSpent: TimeSpentData;
+        };
+    };
+    pageContext: {
+        movieDateRange: string[];
+    };
+}

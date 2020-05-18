@@ -3,6 +3,10 @@ import { FunctionComponent } from 'react';
 import { ReactElement } from 'react';
 import { graphql } from 'gatsby';
 
+import Layout from '../components/layout';
+import SEO from '../components/seo';
+import TimeSpent from '../components/time-spent';
+
 export const query = graphql`
     query($movieDateRange: [String]!) {
         postgres {
@@ -49,3 +53,35 @@ interface MovieRangeDataProps {
         movieDateRange: string[];
     };
 }
+
+const MovieRangeData: FunctionComponent<MovieRangeDataProps> = ({
+    data,
+    pageContext,
+}: MovieRangeDataProps): ReactElement => {
+    const fromDate = pageContext.movieDateRange[0];
+    const untilDate = pageContext.movieDateRange[1];
+    const [
+        numberOfMovies,
+        daysSinceFirstMovie,
+        daysSpentWatching,
+        percentOfTimeSpentWatching,
+    ] = Object.values(data.postgres.timeSpent).map((value) => {
+        return String(value);
+    });
+
+    return (
+        <Layout>
+            <SEO title="Home" />
+            <TimeSpent
+                fromDate={fromDate}
+                untilDate={untilDate}
+                numberOfMoviesWatched={numberOfMovies}
+                totalDaysSinceFirstMovie={daysSinceFirstMovie}
+                totalDaysSpentWatchingMovies={daysSpentWatching}
+                percentOfTimeSpentWatchingMovies={percentOfTimeSpentWatching}
+            />
+        </Layout>
+    );
+};
+
+export default MovieRangeData;

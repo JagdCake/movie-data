@@ -78,6 +78,7 @@ interface TimeSpentProps {
     totalDaysSinceFirstMovie: string;
     totalDaysSpentWatchingMovies: string;
     percentOfTimeSpentWatchingMovies: string;
+    hoursAndMinutesSpentWatchingMovies: [string, string];
 }
 
 const TimeSpent: FunctionComponent<TimeSpentProps> = ({
@@ -87,6 +88,7 @@ const TimeSpent: FunctionComponent<TimeSpentProps> = ({
     totalDaysSinceFirstMovie,
     totalDaysSpentWatchingMovies,
     percentOfTimeSpentWatchingMovies,
+    hoursAndMinutesSpentWatchingMovies,
 }: TimeSpentProps): ReactElement => {
     return (
         <InfoCard id="time-spent">

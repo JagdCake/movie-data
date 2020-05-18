@@ -71,9 +71,11 @@ const MovieRangeData: FunctionComponent<MovieRangeDataProps> = ({
         return String(value);
     });
 
+    const pageTitle = ` from ${fromDate} until ${untilDate}`;
+
     return (
         <Layout>
-            <SEO title="Home" />
+            <SEO title={pageTitle} />
             <TimeSpent
                 fromDate={fromDate}
                 untilDate={untilDate}

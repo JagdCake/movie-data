@@ -88,7 +88,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
                 createPage({
                     path: `${isoDate(startRangeDate)}_until_${isoDate(endRangeDate)}`,
-                    component: path.resolve(`./src/templates/data-range.tsx`),
+                    component: path.resolve(`./src/templates/movie-range-data.tsx`),
                     context: {
                         movieDateRange: [startRangeDate, endRangeDate],
                     },

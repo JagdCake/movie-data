@@ -16,7 +16,7 @@ const InfoCard: FunctionComponent<InfoCardProps> = ({
         <article
             id={id}
             aria-label="Info card"
-            className="border-2 border-purple rounded-sm px-3 pb-6 text-lg"
+            className="border-2 border-purple rounded-sm px-3 pb-6 text-lg shadow-lg"
         >
             <a href={`#${id}`} className="card-link"></a>
             {children}

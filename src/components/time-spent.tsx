@@ -124,6 +124,23 @@ const TimeSpent: FunctionComponent<TimeSpentProps> = ({
                     <span> of my time.</span>
                 </p>
             </section>
+            <section className="mt-4 pt-4 border-t-2 border-dashed">
+                <h1 className="font-bold">More precisely: </h1>
+                <Time
+                    dateTime={`${hoursAndMinutesSpentWatchingMovies[0]}h`}
+                    timeValue={`${hoursAndMinutesSpentWatchingMovies[0]} hours`}
+                />
+                <span> and </span>
+                <Time
+                    dateTime={`${hoursAndMinutesSpentWatchingMovies[1]}m`}
+                    timeValue={`${hoursAndMinutesSpentWatchingMovies[1]}${
+                        hoursAndMinutesSpentWatchingMovies[1] === '1'
+                            ? ' minute'
+                            : ' minutes'
+                    }`}
+                />
+                <span>.</span>
+            </section>
         </InfoCard>
     );
 };

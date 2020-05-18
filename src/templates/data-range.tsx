@@ -65,6 +65,8 @@ const MovieRangeData: FunctionComponent<MovieRangeDataProps> = ({
         daysSinceFirstMovie,
         daysSpentWatching,
         percentOfTimeSpentWatching,
+        hoursSpentWatching,
+        remainingMinutesSpentWatching,
     ] = Object.values(data.postgres.timeSpent).map((value) => {
         return String(value);
     });
@@ -79,6 +81,10 @@ const MovieRangeData: FunctionComponent<MovieRangeDataProps> = ({
                 totalDaysSinceFirstMovie={daysSinceFirstMovie}
                 totalDaysSpentWatchingMovies={daysSpentWatching}
                 percentOfTimeSpentWatchingMovies={percentOfTimeSpentWatching}
+                hoursAndMinutesSpentWatchingMovies={[
+                    hoursSpentWatching,
+                    remainingMinutesSpentWatching,
+                ]}
             />
         </Layout>
     );

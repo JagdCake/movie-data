@@ -5,9 +5,9 @@ import { Link } from 'gatsby';
 import { isoDate } from './time-spent';
 
 const movieRangeSearch = (
-    movieRanges: string[],
+    movieRanges: [string, string][],
     searchValue: string
-): string[] => {
+): [string, string][] => {
     const regexZeroOrMoreOfAnything = '.*';
 
     const searchValueInterspersedWithRegex = searchValue.replace(
@@ -23,7 +23,9 @@ const movieRangeSearch = (
     );
 
     return movieRanges.filter((range) => {
-        const searchTermFoundInRange = searchTerm.test(range);
+        const startAndEndRange = range.join(' ');
+        const searchTermFoundInRange = searchTerm.test(startAndEndRange);
+
         if (searchTermFoundInRange) {
             return range;
         }
@@ -31,7 +33,7 @@ const movieRangeSearch = (
 };
 
 interface MovieRangeListProps {
-    movieRanges: string[];
+    movieRanges: [string, string][];
     maxListLength?: number;
 }
 
@@ -54,7 +56,7 @@ const MovieRangeList: FunctionComponent<MovieRangeListProps> = ({
 };
 
 interface MovieRangeSelectorProps {
-    listOfRanges: string[];
+    listOfRanges: [string, string][];
     movieRangeSearchValue: string;
     setMovieRangeSearchValue: (searchValue: string) => void;
 }

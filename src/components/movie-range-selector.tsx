@@ -58,3 +58,40 @@ interface MovieRangeSelectorProps {
     movieRangeSearchValue: string;
     setMovieRangeSearchValue: (searchValue: string) => void;
 }
+
+const MovieRangeSelector: FunctionComponent<MovieRangeSelectorProps> = ({
+    listOfRanges,
+    movieRangeSearchValue,
+    setMovieRangeSearchValue,
+}: MovieRangeSelectorProps): ReactElement => {
+    const movieRanges = movieRangeSearch(listOfRanges, movieRangeSearchValue);
+
+    return (
+        <article className="w-8/12 mb-8 mx-auto relative text-center">
+            <label htmlFor="movie-range-search">Select movie data range:</label>
+            <input
+                id="movie-range-search"
+                type="search"
+                className="w-full p-2 border-2 border-purple"
+                onChange={(e) => {
+                    const searchValue = e.target.value;
+
+                    setTimeout(() => {
+                        setMovieRangeSearchValue(searchValue);
+                    }, 500);
+                }}
+            />
+            <ul
+                aria-label="movie-ranges"
+                className="w-full absolute z-10 text-sm py-2 bg-gray text-purple border-t-0 border-2 border-purple"
+            >
+                {movieRanges.length === 0 && <li>No Results</li>}
+                {movieRanges.length > 0 && (
+                    <MovieRangeList movieRanges={movieRanges} />
+                )}
+            </ul>
+        </article>
+    );
+};
+
+export default MovieRangeSelector;

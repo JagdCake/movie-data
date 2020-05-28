@@ -51,6 +51,7 @@ interface MovieRangeDataProps {
     };
     pageContext: {
         movieDateRange: string[];
+        movieDateRanges: string[];
     };
 }
 

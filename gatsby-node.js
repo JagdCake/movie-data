@@ -91,6 +91,7 @@ exports.createPages = async ({ graphql, actions }) => {
                     component: path.resolve(`./src/templates/movie-range-data.tsx`),
                     context: {
                         movieDateRange: [startRangeDate, endRangeDate],
+                        movieDateRanges: movieWatchedOnDateRanges,
                     },
                 });
             }

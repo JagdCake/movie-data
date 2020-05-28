@@ -6,6 +6,7 @@ import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import TimeSpent from '../components/time-spent';
+import MovieRangeSelector from '../components/movie-range-selector';
 
 export const query = graphql`
     query($movieDateRange: [String]!) {
@@ -90,6 +91,11 @@ const MovieRangeData: FunctionComponent<MovieRangeDataProps> = ({
     return (
         <Layout>
             <SEO title={pageTitle} />
+            <MovieRangeSelector
+                listOfRanges={listOfRanges}
+                movieRangeSearchValue={searchValue}
+                setMovieRangeSearchValue={setMovieRangeSearchValue}
+            />
             <TimeSpent
                 fromDate={fromDate}
                 untilDate={untilDate}

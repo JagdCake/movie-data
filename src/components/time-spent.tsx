@@ -39,7 +39,7 @@ const isoMonth: Function = (monthName: string): string => {
 
 // function is meant to work only with dates that follow the format of
 // the "watched on" fields from the database
-const isoDate: Function = (date: string): string => {
+export const isoDate: Function = (date: string): string => {
     const dayMonthYear = date.split(' ');
 
     const year = dayMonthYear[2];

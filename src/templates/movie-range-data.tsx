@@ -74,6 +74,17 @@ const MovieRangeData: FunctionComponent<MovieRangeDataProps> = ({
 
     const pageTitle = ` from ${fromDate} until ${untilDate}`;
 
+    const listOfRanges: [string, string][] = [];
+    pageContext.movieDateRanges.map((movieDate, i, movieDateRanges) => {
+        const startRangeDate = movieDate;
+
+        for (let j = i + 1; j < movieDateRanges.length; j++) {
+            const endRangeDate = movieDateRanges[j];
+
+            listOfRanges.push([startRangeDate, endRangeDate]);
+        }
+    });
+
     return (
         <Layout>
             <SEO title={pageTitle} />

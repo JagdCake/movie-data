@@ -85,6 +85,8 @@ const MovieRangeData: FunctionComponent<MovieRangeDataProps> = ({
         }
     });
 
+    const [searchValue, setMovieRangeSearchValue] = React.useState('');
+
     return (
         <Layout>
             <SEO title={pageTitle} />

@@ -11,7 +11,7 @@ const movieRangeSearch = (
     const regexZeroOrMoreOfAnything = '.*';
 
     const searchValueInterspersedWithRegex = searchValue.replace(
-        ' ',
+        /\s/g,
         regexZeroOrMoreOfAnything
     );
 

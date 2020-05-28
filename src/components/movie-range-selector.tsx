@@ -28,6 +28,11 @@ const movieRangeSearch = (
     });
 };
 
+interface MovieRangeListProps {
+    movieRanges: string[];
+    maxListLength?: number;
+}
+
 interface MovieRangeSelectorProps {
     listOfRanges: string[];
     movieRangeSearchValue: string;

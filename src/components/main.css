@@ -1,5 +1,12 @@
 @tailwind base;
 
+/* Stop Safari from rounding the search box */
+/* Source: https://stackoverflow.com/a/32644614/8980616 */
+input[type="search"] {
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
 @tailwind components;
 
 .card-link {

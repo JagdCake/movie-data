@@ -75,6 +75,12 @@ const MovieRangeSelector: FunctionComponent<MovieRangeSelectorProps> = ({
                 id="movie-range-search"
                 type="search"
                 className="w-full p-2 border-2 border-purple"
+                onFocus={() => {
+                    if (movieRangeSearchValue === '') {
+                        // display the movie range list
+                        setMovieRangeSearchValue(' ');
+                    }
+                }}
                 onChange={(e) => {
                     const searchValue = e.target.value;
 

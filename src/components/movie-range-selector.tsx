@@ -69,7 +69,10 @@ const MovieRangeSelector: FunctionComponent<MovieRangeSelectorProps> = ({
     const movieRanges = movieRangeSearch(listOfRanges, movieRangeSearchValue);
 
     return (
-        <article className="w-8/12 mb-8 mx-auto relative text-center">
+        <form
+            className="w-8/12 mb-8 mx-auto relative text-center"
+            onReset={() => setMovieRangeSearchValue('')}
+        >
             <label htmlFor="movie-range-search">Select movie data range:</label>
             <input
                 id="movie-range-search"
@@ -89,6 +92,13 @@ const MovieRangeSelector: FunctionComponent<MovieRangeSelectorProps> = ({
                     }, 500);
                 }}
             />
+            <button
+                type="reset"
+                aria-label="clear search box"
+                className="absolute p-2 border-2 border-l-0 border-purple bg-yellow"
+            >
+                ✕
+            </button>
             {movieRangeSearchValue != '' && (
                 <ul
                     aria-label="movie-ranges"
@@ -100,6 +110,7 @@ const MovieRangeSelector: FunctionComponent<MovieRangeSelectorProps> = ({
                     )}
                 </ul>
             )}
+        </form>
     );
 };
 

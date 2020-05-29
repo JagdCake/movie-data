@@ -83,16 +83,17 @@ const MovieRangeSelector: FunctionComponent<MovieRangeSelectorProps> = ({
                     }, 500);
                 }}
             />
-            <ul
-                aria-label="movie-ranges"
-                className="w-full absolute z-10 text-sm py-2 bg-gray text-purple border-t-0 border-2 border-purple"
-            >
-                {movieRanges.length === 0 && <li>No Results</li>}
-                {movieRanges.length > 0 && (
-                    <MovieRangeList movieRanges={movieRanges} />
-                )}
-            </ul>
-        </article>
+            {movieRangeSearchValue != '' && (
+                <ul
+                    aria-label="movie-ranges"
+                    className="w-full absolute z-10 text-sm py-2 bg-gray text-purple border-t-0 border-2 border-purple"
+                >
+                    {movieRanges.length === 0 && <li>No Results</li>}
+                    {movieRanges.length > 0 && (
+                        <MovieRangeList movieRanges={movieRanges} />
+                    )}
+                </ul>
+            )}
     );
 };
 

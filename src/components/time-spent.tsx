@@ -130,15 +130,20 @@ const TimeSpent: FunctionComponent<TimeSpentProps> = ({
                     dateTime={`${hoursAndMinutesSpentWatchingMovies[0]}h`}
                     timeValue={`${hoursAndMinutesSpentWatchingMovies[0]} hours`}
                 />
-                <span> and </span>
-                <Time
-                    dateTime={`${hoursAndMinutesSpentWatchingMovies[1]}m`}
-                    timeValue={`${hoursAndMinutesSpentWatchingMovies[1]}${
-                        hoursAndMinutesSpentWatchingMovies[1] === '1'
-                            ? ' minute'
-                            : ' minutes'
-                    }`}
-                />
+                {hoursAndMinutesSpentWatchingMovies[1] != '0' && (
+                    <>
+                        <span> and </span>
+                        <Time
+                            dateTime={`${hoursAndMinutesSpentWatchingMovies[1]}m`}
+                            timeValue={`
+                                ${hoursAndMinutesSpentWatchingMovies[1]}${
+                                hoursAndMinutesSpentWatchingMovies[1] === '1'
+                                    ? ' minute'
+                                    : ' minutes'
+                            }`}
+                        />
+                    </>
+                )}
                 <span>.</span>
             </section>
         </InfoCard>

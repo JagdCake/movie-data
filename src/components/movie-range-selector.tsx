@@ -73,7 +73,12 @@ const MovieRangeSelector: FunctionComponent<MovieRangeSelectorProps> = ({
             className="w-8/12 mb-8 mx-auto relative text-center"
             onReset={() => setMovieRangeSearchValue('')}
         >
-            <label htmlFor="movie-range-search">Select movie data range:</label>
+            <label
+                htmlFor="movie-range-search"
+                className="block bg-purple text-gray p-1 rounded-t-sm font-bold"
+            >
+                Select movie data range
+            </label>
             <input
                 id="movie-range-search"
                 type="search"

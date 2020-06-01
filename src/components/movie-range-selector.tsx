@@ -81,7 +81,8 @@ const MovieRangeSelector: FunctionComponent<MovieRangeSelectorProps> = ({
             </label>
             <input
                 id="movie-range-search"
-                type="search"
+                aria-label="search box"
+                type="text"
                 className="w-full p-2 border-2 border-purple"
                 onFocus={() => {
                     if (movieRangeSearchValue === '') {

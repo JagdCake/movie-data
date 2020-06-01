@@ -118,9 +118,9 @@ const TimeSpent: FunctionComponent<TimeSpentProps> = ({
                         timeValue={totalDaysSpentWatchingMovies}
                     />
                     <span> watching films. That&apos;s </span>
-                    <strong className="p-1 bg-purple text-yellow rounded-sm">
+                    <span className="p-1 bg-purple text-yellow rounded-sm">
                         {percentOfTimeSpentWatchingMovies}%
-                    </strong>
+                    </span>
                     <span> of my time.</span>
                 </p>
             </section>

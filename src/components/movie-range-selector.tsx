@@ -75,7 +75,7 @@ const MovieRangeSelector: FunctionComponent<MovieRangeSelectorProps> = ({
         >
             <label
                 htmlFor="movie-range-search"
-                className="block bg-purple text-gray p-1 rounded-t-sm font-bold"
+                className="block bg-yellow border-2 border-b-0 text-purple p-1 rounded-t-sm font-bold"
             >
                 Select movie data range
             </label>

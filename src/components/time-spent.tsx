@@ -55,7 +55,7 @@ interface TimeProp {
     timeValue: string;
 }
 
-const Time: FunctionComponent<TimeProp> = ({
+export const Time: FunctionComponent<TimeProp> = ({
     dateTime,
     timeValue,
 }: TimeProp): ReactElement => {

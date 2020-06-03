@@ -7,6 +7,7 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 import TimeSpent from '../components/time-spent';
 import MovieRangeSelector from '../components/movie-range-selector';
+import MovieLength from '../components/movie-length';
 import { MovieLengthProps } from '../components/movie-length';
 
 export const query = graphql`
@@ -104,6 +105,12 @@ const MovieRangeData: FunctionComponent<MovieRangeDataProps> = ({
 
     const [searchValue, setMovieRangeSearchValue] = React.useState('');
 
+    const {
+        longestMovie,
+        shortestMovie,
+        movieOfAverageLength,
+    } = data.postgres.movieLength;
+
     return (
         <Layout>
             <SEO title={pageTitle} />
@@ -123,6 +130,11 @@ const MovieRangeData: FunctionComponent<MovieRangeDataProps> = ({
                     hoursSpentWatching,
                     remainingMinutesSpentWatching,
                 ]}
+            />
+            <MovieLength
+                longestMovie={longestMovie}
+                shortestMovie={shortestMovie}
+                movieOfAverageLength={movieOfAverageLength}
             />
         </Layout>
     );

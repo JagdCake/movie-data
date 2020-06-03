@@ -1,6 +1,7 @@
 import React from 'react';
 import { FunctionComponent } from 'react';
 import { ReactElement } from 'react';
+import InfoCard from './info-card';
 import { Time } from './time-spent';
 
 interface MovieRuntimeSectionProps {
@@ -66,3 +67,48 @@ interface MovieLengthProps {
     shortestMovie: MovieAndItsRuntime;
     movieOfAverageLength: MovieAndItsRuntime;
 }
+
+const MovieLength: FunctionComponent<MovieLengthProps> = ({
+    longestMovie,
+    shortestMovie,
+    movieOfAverageLength,
+}: MovieLengthProps): ReactElement => {
+    const longestMovieTitle = longestMovie[0];
+    const shortestMovieTitle = shortestMovie[0];
+    const movieOfAverageLengthTitle = movieOfAverageLength[0];
+
+    const longestMovieRuntime = longestMovie[1].split(':');
+    const shortestMovieRuntime = shortestMovie[1].split(':');
+    const movieOfAverageLengthRuntime = movieOfAverageLength[1].split(':');
+
+    return (
+        <InfoCard id="movie-length">
+            <section className="mb-4 pb-4 border-b-2 border-dashed">
+                <MovieRuntimeSection
+                    sectionTitle="Longest runtime"
+                    movieTitle={longestMovieTitle}
+                    movieRuntimeHours={longestMovieRuntime[0]}
+                    movieRuntimeMinutes={longestMovieRuntime[1]}
+                />
+            </section>
+            <section className="mb-4 pb-4 border-b-2 border-dashed">
+                <MovieRuntimeSection
+                    sectionTitle="Shortest runtime"
+                    movieTitle={shortestMovieTitle}
+                    movieRuntimeHours={shortestMovieRuntime[0]}
+                    movieRuntimeMinutes={shortestMovieRuntime[1]}
+                />
+            </section>
+            <section>
+                <MovieRuntimeSection
+                    sectionTitle="Average runtime"
+                    movieTitle={movieOfAverageLengthTitle}
+                    movieRuntimeHours={movieOfAverageLengthRuntime[0]}
+                    movieRuntimeMinutes={movieOfAverageLengthRuntime[1]}
+                />
+            </section>
+        </InfoCard>
+    );
+};
+
+export default MovieLength;

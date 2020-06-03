@@ -62,7 +62,7 @@ const MovieRuntimeSection: FunctionComponent<MovieRuntimeSectionProps> = ({
 
 type MovieAndItsRuntime = [string, string];
 
-interface MovieLengthProps {
+export interface MovieLengthProps {
     longestMovie: MovieAndItsRuntime;
     shortestMovie: MovieAndItsRuntime;
     movieOfAverageLength: MovieAndItsRuntime;

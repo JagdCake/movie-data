@@ -7,6 +7,7 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 import TimeSpent from '../components/time-spent';
 import MovieRangeSelector from '../components/movie-range-selector';
+import { MovieLengthProps } from '../components/movie-length';
 
 export const query = graphql`
     query($movieDateRange: [String]!) {
@@ -31,6 +32,20 @@ export const query = graphql`
                     movieDateRange: $movieDateRange
                 )
             }
+            movieLength: movieById(id: 1) {
+                longestMovie: runtimeAndTitleOfMovieOfSpecificLengthInTheRang(
+                    movieDateRange: $movieDateRange
+                    movieLength: "longest"
+                )
+                shortestMovie: runtimeAndTitleOfMovieOfSpecificLengthInTheRang(
+                    movieDateRange: $movieDateRange
+                    movieLength: "shortest"
+                )
+                movieOfAverageLength: runtimeAndTitleOfMovieOfSpecificLengthInTheRang(
+                    movieDateRange: $movieDateRange
+                    movieLength: "average"
+                )
+            }
         }
     }
 `;
@@ -48,6 +63,7 @@ interface MovieRangeDataProps {
     data: {
         postgres: {
             timeSpent: TimeSpentData;
+            movieLength: MovieLengthProps;
         };
     };
     pageContext: {

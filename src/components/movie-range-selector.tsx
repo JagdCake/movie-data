@@ -70,7 +70,7 @@ const MovieRangeSelector: FunctionComponent<MovieRangeSelectorProps> = ({
 
     return (
         <form
-            className="w-8/12 mb-8 mx-auto relative text-center"
+            className="w-8/12 mx-auto relative text-center"
             onReset={() => setMovieRangeSearchValue('')}
         >
             <label

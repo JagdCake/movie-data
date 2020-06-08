@@ -129,6 +129,7 @@ const MovieRangeData: FunctionComponent<MovieRangeDataProps> = ({
     } = data.postgres.movieLength;
 
     const top10Genres = data.postgres.lists.top10Genres;
+    const top10Directors = data.postgres.lists.top10Directors;
 
     return (
         <Layout>
@@ -156,6 +157,7 @@ const MovieRangeData: FunctionComponent<MovieRangeDataProps> = ({
                 movieOfAverageLength={movieOfAverageLength}
             />
             <List listType="genres" list={top10Genres} />
+            <List listType="directors" list={top10Directors} />
         </Layout>
     );
 };

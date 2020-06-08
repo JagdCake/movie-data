@@ -37,11 +37,13 @@ interface ListProps {
         | 'my ratings'
         | 'imdb ratings';
     list: [string, string][];
+    miscSummaryData?: string;
 }
 
 const List: FunctionComponent<ListProps> = ({
     listType,
     list,
+    miscSummaryData = '',
 }: ListProps): ReactElement | null => {
     const topValue = list[0][0];
 

@@ -4,7 +4,15 @@ import { ReactElement } from 'react';
 import InfoCard from './info-card';
 import ValuesAndCountsList from './values-and-counts-list';
 
-interface GenreListProp {
+interface ListProps {
+    listType:
+        | 'genres'
+        | 'directors'
+        | 'actors'
+        | 'decades'
+        | 'rating system'
+        | 'my ratings'
+        | 'imdb ratings';
     list: [string, string][];
 }
 

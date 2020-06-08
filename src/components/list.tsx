@@ -48,6 +48,16 @@ const List: FunctionComponent<ListProps> = ({
                     />
                 </InfoCard>
             );
+        case 'directors':
+            return (
+                <InfoCard id="movie-directors">
+                    <ValuesAndCountsList
+                        listSummary={directorListSummary(topValue)}
+                        listHeading="Number of movies directed by"
+                        list={list}
+                    />
+                </InfoCard>
+            );
     }
 
     return null;

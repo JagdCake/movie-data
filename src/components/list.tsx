@@ -40,6 +40,14 @@ const decadeListSummary = (
     </p>
 );
 
+const ratingSystemSummary = (): ReactElement => (
+    <p>
+        <span>I have a </span>
+        <span className="highlight">food inspired</span>
+        <span> rating system.</span>
+    </p>
+);
+
 interface ListProps {
     listType:
         | 'genres'

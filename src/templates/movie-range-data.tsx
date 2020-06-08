@@ -54,6 +54,11 @@ export const query = graphql`
                     genreOrRating: "genre"
                     numberOfValues: 10
                 )
+                top10Directors: namesAndCountsOfPrincipalsInTheRange(
+                    movieDateRange: $movieDateRange
+                    principals: "directors"
+                    numberOfNames: 10
+                )
             }
         }
     }
@@ -75,6 +80,7 @@ interface MovieRangeDataProps {
             movieLength: MovieLengthProps;
             lists: {
                 top10Genres: [string, string][];
+                top10Directors: [string, string][];
             };
         };
     };

@@ -9,7 +9,7 @@ import TimeSpent from '../components/time-spent';
 import MovieRangeSelector from '../components/movie-range-selector';
 import MovieLength from '../components/movie-length';
 import { MovieLengthProps } from '../components/movie-length';
-import List from '../components/genre-list';
+import List from '../components/list';
 
 export const query = graphql`
     query($movieDateRange: [String]!) {

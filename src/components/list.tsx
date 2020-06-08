@@ -112,6 +112,17 @@ const List: FunctionComponent<ListProps> = ({
                     />
                 </InfoCard>
             );
+        case 'rating system':
+            return (
+                <InfoCard id="movie-rating-system">
+                    <ValuesAndCountsList
+                        listSummary={ratingSystemSummary()}
+                        listHeading="My ratings compared to IMDb stars"
+                        list={list}
+                    />
+                </InfoCard>
+            );
+
         default:
             return null;
     }

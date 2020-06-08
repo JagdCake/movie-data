@@ -4,6 +4,14 @@ import { ReactElement } from 'react';
 import InfoCard from './info-card';
 import ValuesAndCountsList from './values-and-counts-list';
 
+const genreListSummary = (topGenre: string): ReactElement => (
+    <p>
+        <span>I mostly watch </span>
+        <span className="highlight">{topGenre}</span>
+        <span> movies, but I&apos;m open to every genre.</span>
+    </p>
+);
+
 interface ListProps {
     listType:
         | 'genres'
@@ -16,27 +24,25 @@ interface ListProps {
     list: [string, string][];
 }
 
-const GenreList: FunctionComponent<GenreListProp> = ({
+const List: FunctionComponent<ListProps> = ({
+    listType,
     list,
-}: GenreListProp): ReactElement => {
-    const topGenre = list[0][0];
-    const genreSummary: ReactElement = (
-        <p>
-            <span>I mostly watch </span>
-            <span className="highlight">{topGenre}</span>
-            <span> movies, but I&apos;m open to every genre.</span>
-        </p>
-    );
+}: ListProps): ReactElement | null => {
+    const topValue = list[0][0];
 
-    return (
-        <InfoCard id="movie-genres">
-            <ValuesAndCountsList
-                listSummary={genreSummary}
-                listHeading="Number of movies per genre"
-                list={list}
-            />
-        </InfoCard>
-    );
+    if (listType === 'genres') {
+        return (
+            <InfoCard id="movie-genres">
+                <ValuesAndCountsList
+                    listSummary={genreListSummary(topValue)}
+                    listHeading="Number of movies per genre"
+                    list={list}
+                />
+            </InfoCard>
+        );
+    }
+
+    return null;
 };
 
-export default GenreList;
+export default List;

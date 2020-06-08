@@ -9,7 +9,7 @@ import TimeSpent from '../components/time-spent';
 import MovieRangeSelector from '../components/movie-range-selector';
 import MovieLength from '../components/movie-length';
 import { MovieLengthProps } from '../components/movie-length';
-import GenreList from '../components/genre-list';
+import List from '../components/genre-list';
 
 export const query = graphql`
     query($movieDateRange: [String]!) {
@@ -149,7 +149,7 @@ const MovieRangeData: FunctionComponent<MovieRangeDataProps> = ({
                 shortestMovie={shortestMovie}
                 movieOfAverageLength={movieOfAverageLength}
             />
-            <GenreList list={top10Genres} />
+            <List listType="genres" list={top10Genres} />
         </Layout>
     );
 };

@@ -60,10 +60,7 @@ export const Time: FunctionComponent<TimeProp> = ({
     timeValue,
 }: TimeProp): ReactElement => {
     return (
-        <time
-            dateTime={dateTime}
-            className="p-1 bg-purple text-yellow rounded-sm"
-        >
+        <time dateTime={dateTime} className="highlight">
             {timeValue}
         </time>
     );
@@ -99,7 +96,7 @@ const TimeSpent: FunctionComponent<TimeSpentProps> = ({
                     <span> until </span>
                     <Time dateTime={isoDate(untilDate)} timeValue={untilDate} />
                     <span>, I&apos;ve watched </span>
-                    <strong className="p-1 bg-purple text-yellow rounded-sm">
+                    <strong className="highlight">
                         {numberOfMoviesWatched} movies
                     </strong>
                     <span>.</span>
@@ -118,7 +115,7 @@ const TimeSpent: FunctionComponent<TimeSpentProps> = ({
                         timeValue={totalDaysSpentWatchingMovies}
                     />
                     <span> watching films. That&apos;s </span>
-                    <span className="p-1 bg-purple text-yellow rounded-sm">
+                    <span className="highlight">
                         {percentOfTimeSpentWatchingMovies}%
                     </span>
                     <span> of my time.</span>

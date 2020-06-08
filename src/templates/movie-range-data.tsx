@@ -148,6 +148,14 @@ const MovieRangeData: FunctionComponent<MovieRangeDataProps> = ({
     const top10Actors = data.postgres.lists.top10Actors;
     const top10Decades = data.postgres.lists.top10Decades;
     const movieAgePreference = data.postgres.lists.movieAgePreference;
+    const myRatingSystem: [string, string][] = [
+        ['Sublime Lettuce', '9–10'],
+        ['Amazing Savory', '7.9–8.9'],
+        ['Great Onion', '6–7.8'],
+        ['Good Tomato', '5–5.9'],
+        ['Decent Carrot', '4–4.9'],
+        ['Bad Eggplant', '1–3.9'],
+    ];
 
     return (
         <Layout>
@@ -182,6 +190,7 @@ const MovieRangeData: FunctionComponent<MovieRangeDataProps> = ({
                 list={top10Decades}
                 miscSummaryData={movieAgePreference}
             />
+            <List listType="rating system" list={myRatingSystem} />
         </Layout>
     );
 };

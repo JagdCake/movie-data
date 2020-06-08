@@ -27,6 +27,19 @@ const actorListSummary = (topActor: string): ReactElement => (
     </p>
 );
 
+const decadeListSummary = (
+    movieAge: string,
+    topDecade: string
+): ReactElement => (
+    <p>
+        <span>I seem to prefer </span>
+        <span className="highlight">{movieAge}</span>
+        <span> movies, from the </span>
+        <span className="highlight">{topDecade}</span>
+        <span>.</span>
+    </p>
+);
+
 interface ListProps {
     listType:
         | 'genres'

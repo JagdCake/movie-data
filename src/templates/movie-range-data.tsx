@@ -47,6 +47,13 @@ export const query = graphql`
                     movieLength: "average"
                 )
             }
+            lists: movieById(id: 1) {
+                top10Genres: genresOrRatingsAndTheirCountsInTheRange(
+                    movieDateRange: $movieDateRange
+                    genreOrRating: "genre"
+                    numberOfValues: 10
+                )
+            }
         }
     }
 `;
@@ -65,6 +72,9 @@ interface MovieRangeDataProps {
         postgres: {
             timeSpent: TimeSpentData;
             movieLength: MovieLengthProps;
+            lists: {
+                top10Genres: [string, string][];
+            };
         };
     };
     pageContext: {

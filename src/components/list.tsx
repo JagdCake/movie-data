@@ -91,6 +91,19 @@ const List: FunctionComponent<ListProps> = ({
                     />
                 </InfoCard>
             );
+        case 'decades':
+            return (
+                <InfoCard id="movie-decades">
+                    <ValuesAndCountsList
+                        listSummary={decadeListSummary(
+                            miscSummaryData,
+                            topValue
+                        )}
+                        listHeading="Number of movies per decade"
+                        list={list}
+                    />
+                </InfoCard>
+            );
         default:
             return null;
     }

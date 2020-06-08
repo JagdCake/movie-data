@@ -58,9 +58,9 @@ const List: FunctionComponent<ListProps> = ({
                     />
                 </InfoCard>
             );
+        default:
+            return null;
     }
-
-    return null;
 };
 
 export default List;

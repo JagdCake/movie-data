@@ -59,6 +59,11 @@ export const query = graphql`
                     principals: "directors"
                     numberOfNames: 10
                 )
+                top10Actors: namesAndCountsOfPrincipalsInTheRange(
+                    movieDateRange: $movieDateRange
+                    principals: "actors"
+                    numberOfNames: 10
+                )
             }
         }
     }
@@ -81,6 +86,7 @@ interface MovieRangeDataProps {
             lists: {
                 top10Genres: [string, string][];
                 top10Directors: [string, string][];
+                top10Actors: [string, string][];
             };
         };
     };

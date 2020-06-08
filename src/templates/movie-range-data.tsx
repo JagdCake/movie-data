@@ -146,6 +146,8 @@ const MovieRangeData: FunctionComponent<MovieRangeDataProps> = ({
     const top10Genres = data.postgres.lists.top10Genres;
     const top10Directors = data.postgres.lists.top10Directors;
     const top10Actors = data.postgres.lists.top10Actors;
+    const top10Decades = data.postgres.lists.top10Decades;
+    const movieAgePreference = data.postgres.lists.movieAgePreference;
 
     return (
         <Layout>
@@ -175,6 +177,11 @@ const MovieRangeData: FunctionComponent<MovieRangeDataProps> = ({
             <List listType="genres" list={top10Genres} />
             <List listType="directors" list={top10Directors} />
             <List listType="actors" list={top10Actors} />
+            <List
+                listType="decades"
+                list={top10Decades}
+                miscSummaryData={movieAgePreference}
+            />
         </Layout>
     );
 };

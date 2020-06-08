@@ -12,6 +12,13 @@ const genreListSummary = (topGenre: string): ReactElement => (
     </p>
 );
 
+const directorListSummary = (topDirector: string): ReactElement => (
+    <p>
+        <span className="highlight">{topDirector}</span>
+        <span> stands out as a director.</span>
+    </p>
+);
+
 interface ListProps {
     listType:
         | 'genres'

@@ -66,6 +66,16 @@ const List: FunctionComponent<ListProps> = ({
                     />
                 </InfoCard>
             );
+        case 'actors':
+            return (
+                <InfoCard id="movie-actors">
+                    <ValuesAndCountsList
+                        listSummary={actorListSummary(topValue)}
+                        listHeading="Number of movies starring"
+                        list={list}
+                    />
+                </InfoCard>
+            );
         default:
             return null;
     }

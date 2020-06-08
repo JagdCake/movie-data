@@ -30,16 +30,17 @@ const List: FunctionComponent<ListProps> = ({
 }: ListProps): ReactElement | null => {
     const topValue = list[0][0];
 
-    if (listType === 'genres') {
-        return (
-            <InfoCard id="movie-genres">
-                <ValuesAndCountsList
-                    listSummary={genreListSummary(topValue)}
-                    listHeading="Number of movies per genre"
-                    list={list}
-                />
-            </InfoCard>
-        );
+    switch (listType) {
+        case 'genres':
+            return (
+                <InfoCard id="movie-genres">
+                    <ValuesAndCountsList
+                        listSummary={genreListSummary(topValue)}
+                        listHeading="Number of movies per genre"
+                        list={list}
+                    />
+                </InfoCard>
+            );
     }
 
     return null;

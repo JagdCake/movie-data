@@ -4,6 +4,8 @@ import { ReactElement } from 'react';
 import { Link } from 'gatsby';
 import { isoDate } from './time-spent';
 
+const MAX_SEARCH_RESULTS = 7;
+
 const movieRangeSearch = (
     movieRanges: [string, string][],
     searchValue: string
@@ -39,7 +41,7 @@ interface MovieRangeListProps {
 
 const MovieRangeList: FunctionComponent<MovieRangeListProps> = ({
     movieRanges,
-    maxListLength = 7,
+    maxListLength = MAX_SEARCH_RESULTS,
 }: MovieRangeListProps): ReactElement[] => {
     const truncatedMovieRanges = movieRanges.slice(0, maxListLength);
 
@@ -113,6 +115,12 @@ const MovieRangeSelector: FunctionComponent<MovieRangeSelectorProps> = ({
                     {movieRanges.length === 0 && <li>No Results</li>}
                     {movieRanges.length > 0 && (
                         <MovieRangeList movieRanges={movieRanges} />
+                    )}
+                    {movieRanges.length > MAX_SEARCH_RESULTS && (
+                        <span>and some more</span>
+                    )}
+                    {movieRanges.length < MAX_SEARCH_RESULTS && movieRanges.length > 0 && (
+                        <span>and that&apos;s all</span>
                     )}
                 </ul>
             )}

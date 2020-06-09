@@ -5,7 +5,11 @@ module.exports = {
             purple: '#221522',
             yellow: '#ffed66',
         },
-        extend: {},
+        extend: {
+            width: {
+                '96': '24rem',
+            },
+        },
     },
     variants: {},
     plugins: [],

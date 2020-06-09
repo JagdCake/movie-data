@@ -48,6 +48,39 @@ const ratingSystemSummary = (): ReactElement => (
     </p>
 );
 
+const myRatingsSummary = (topRating: string): ReactElement => {
+    let pluralizedTopRating: string;
+    switch (topRating) {
+        case 'Sublime Lettuce':
+            pluralizedTopRating = 'Sublime Lettuces';
+            break;
+        case 'Amazing Savory':
+            pluralizedTopRating = 'Amazing Savories';
+            break;
+        case 'Great Onion':
+            pluralizedTopRating = 'Great Onions';
+            break;
+        case 'Good Tomato':
+            pluralizedTopRating = 'Good Tomatoes';
+            break;
+        case 'Decent Carrot':
+            pluralizedTopRating = 'Decent Carrots';
+            break;
+        case 'Bad Eggplant':
+            pluralizedTopRating = 'Bad Eggplants';
+            break;
+        default:
+            throw Error(`${topRating} is not a valid rating value.`);
+    }
+
+    return (
+        <p>
+            <span>I watch a lot of </span>
+            <span className="highlight">{pluralizedTopRating}.</span>
+        </p>
+    );
+};
+
 interface ListProps {
     listType:
         | 'genres'

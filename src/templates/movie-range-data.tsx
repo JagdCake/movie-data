@@ -10,6 +10,7 @@ import MovieRangeSelector from '../components/movie-range-selector';
 import MovieLength from '../components/movie-length';
 import { MovieLengthProps } from '../components/movie-length';
 import List from '../components/list';
+import Footer from '../components/footer';
 
 export const query = graphql`
     query($movieDateRange: [String]!) {
@@ -217,6 +218,7 @@ const MovieRangeData: FunctionComponent<MovieRangeDataProps> = ({
                 list={top10TranslatedImdbRatings}
                 miscSummaryData={imdbRatingsComparedToMine}
             />
+            <Footer />
         </Layout>
     );
 };

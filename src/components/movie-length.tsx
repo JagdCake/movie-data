@@ -45,7 +45,7 @@ const MovieRuntimeSection: FunctionComponent<MovieRuntimeSectionProps> = ({
 
     return (
         <>
-            <h1 className="font-bold">{sectionTitle}: </h1>
+            <h1 className="font-bold text-center pb-2">{sectionTitle}</h1>
             <Time
                 dateTime={`${movieRuntimeHours}H${movieRuntimeMinutes}M`}
                 timeValue={timeValueHours + timeValueMinutes}

@@ -122,7 +122,7 @@ const TimeSpent: FunctionComponent<TimeSpentProps> = ({
                 </p>
             </section>
             <section className="mt-4 pt-4 border-t-2 border-dashed">
-                <h1 className="font-bold">More precisely: </h1>
+                <h1 className="font-bold text-center pb-2">More precisely</h1>
                 <Time
                     dateTime={`${hoursAndMinutesSpentWatchingMovies[0]}h`}
                     timeValue={`${hoursAndMinutesSpentWatchingMovies[0]} hours`}

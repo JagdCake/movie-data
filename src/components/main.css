@@ -1,5 +1,9 @@
 @tailwind base;
 
+article[id]:target {
+    background-color: #FFED66;
+}
+
 @tailwind components;
 
 .card-link {

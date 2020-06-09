@@ -10,6 +10,9 @@ module.exports = {
                 '96': '24rem',
             },
         },
+        screens: {
+            sm: '414px',
+        },
     },
     variants: {},
     plugins: [],

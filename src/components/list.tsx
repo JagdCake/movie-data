@@ -76,7 +76,8 @@ const myRatingsSummary = (topRating: string): ReactElement => {
     return (
         <p>
             <span>I watch a lot of </span>
-            <span className="highlight">{pluralizedTopRating}.</span>
+            <span className="highlight">{pluralizedTopRating}</span>
+            <span>.</span>
         </p>
     );
 };

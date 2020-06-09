@@ -71,6 +71,11 @@ export const query = graphql`
                 movieAgePreference: movieAgePreferenceInTheRange(
                     movieDateRange: $movieDateRange
                 )
+                myTopRatings: genresOrRatingsAndTheirCountsInTheRange(
+                    movieDateRange: $movieDateRange
+                    genreOrRating: "rating"
+                    numberOfValues: 6
+                )
             }
         }
     }
@@ -96,6 +101,7 @@ interface MovieRangeDataProps {
                 top10Actors: [string, string][];
                 top10Decades: [string, string][];
                 movieAgePreference: string;
+                myTopRatings: [string, string][];
             };
         };
     };

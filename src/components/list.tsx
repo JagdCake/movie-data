@@ -155,7 +155,16 @@ const List: FunctionComponent<ListProps> = ({
                     />
                 </InfoCard>
             );
-
+        case 'my ratings':
+            return (
+                <InfoCard id="my-ratings">
+                    <ValuesAndCountsList
+                        listSummary={myRatingsSummary(topValue)}
+                        listHeading="Number of movies per my rating system"
+                        list={list}
+                    />
+                </InfoCard>
+            );
         default:
             return null;
     }

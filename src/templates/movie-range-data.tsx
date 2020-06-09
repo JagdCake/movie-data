@@ -76,6 +76,13 @@ export const query = graphql`
                     genreOrRating: "rating"
                     numberOfValues: 6
                 )
+                imdbRatingsComparedToMine: imdbRatingsScoreComparedToMine(
+                    movieDateRange: $movieDateRange
+                )
+                top10TranslatedImdbRatings: numberOfMoviesPerTranslatedImdbRatingInTheRange(
+                    movieDateRange: $movieDateRange
+                    numberOfValues: 10
+                )
             }
         }
     }
@@ -102,6 +109,8 @@ interface MovieRangeDataProps {
                 top10Decades: [string, string][];
                 movieAgePreference: string;
                 myTopRatings: [string, string][];
+                imdbRatingsComparedToMine: string;
+                top10TranslatedImdbRatings: [string, string][];
             };
         };
     };

@@ -82,6 +82,16 @@ const myRatingsSummary = (topRating: string): ReactElement => {
     );
 };
 
+const imdbRatingsSummary = (
+    imdbRatingsComparedToMine: string
+): ReactElement => (
+    <p>
+        <span>Compared to me, IMDb users give movies </span>
+        <span className="highlight">{imdbRatingsComparedToMine}</span>
+        <span> ratings.</span>
+    </p>
+);
+
 interface ListProps {
     listType:
         | 'genres'

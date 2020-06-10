@@ -61,7 +61,7 @@
     "clean": "gatsby clean",
     "test": "jest",
     "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx",
-    "deploy": "gatsby clean && gatsby build && cp CNAME ./public/static/ && gh-pages -d public"
+    "deploy": "gatsby clean && gatsby build && cp CNAME ./public/ && gh-pages -d public"
   },
   "repository": {
     "type": "git",

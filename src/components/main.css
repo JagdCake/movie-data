@@ -4,6 +4,21 @@ article[id]:target {
     background-color: #FFED66;
 }
 
+svg {
+    animation-duration: 0.5s;
+    animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
 @tailwind components;
 
 .card-link {

@@ -30,4 +30,10 @@ describe('Movie range selector component', () => {
         unmount();
     };
 
+    it('should display only search results which contain the search term', () => {
+        searchTermTesting('jun', 2);
+        searchTermTesting('jul', 1);
+        searchTermTesting('2016', 2);
+        searchTermTesting('01', 3);
+    });
 });

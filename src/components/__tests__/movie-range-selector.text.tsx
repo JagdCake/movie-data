@@ -37,4 +37,27 @@ describe('Movie range selector component', () => {
         searchTermTesting('2016', 2);
         searchTermTesting('01', 3);
     });
+
+    it('should set search value on search box focus', () => {
+        let searchValueState = '';
+
+        render(
+            <MovieRangeSelector
+                listOfRanges={[['', '']]}
+                movieRangeSearchValue=""
+                setMovieRangeSearchValue={(searchValue: string) => {
+                    searchValueState = searchValue;
+                }}
+            />
+        );
+
+        const searchBox: HTMLInputElement = document.querySelector(
+            '#movie-range-search'
+        ) as HTMLInputElement;
+
+        expect(searchValueState).toEqual('');
+
+        searchBox.focus();
+        expect(searchValueState).toEqual(' ');
+    });
 });

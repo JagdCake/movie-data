@@ -25,6 +25,7 @@ describe('Movie range selector component', () => {
             movieRanges.querySelectorAll('li')
         ) as HTMLLIElement[];
 
+        expect(movieRanges.innerHTML).not.toContain('<li>No Results</li>');
         expect(searchResults.length).toEqual(numberOfResults);
 
         unmount();

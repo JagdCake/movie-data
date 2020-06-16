@@ -60,4 +60,41 @@ describe('Movie range selector component', () => {
         searchBox.focus();
         expect(searchValueState).toEqual(' ');
     });
+
+    it('should hide the search results on click of the reset button', () => {
+        let searchValueState =
+            'this value makes sure that the search results list is displayed';
+
+        const { getByLabelText, rerender } = render(
+            <MovieRangeSelector
+                listOfRanges={[['', '']]}
+                movieRangeSearchValue={searchValueState}
+                setMovieRangeSearchValue={(searchValue: string) => {
+                    searchValueState = searchValue;
+                }}
+            />
+        );
+
+        const listOfSearchValues: HTMLUListElement = getByLabelText(
+            'movie-ranges'
+        ) as HTMLUListElement;
+        expect(listOfSearchValues).toBeInTheDocument();
+
+        const resetButton: HTMLButtonElement = getByLabelText(
+            'clear search box'
+        ) as HTMLButtonElement;
+        resetButton.click();
+
+        // rerender to pick up the new search value
+        rerender(
+            <MovieRangeSelector
+                listOfRanges={[['', '']]}
+                movieRangeSearchValue={searchValueState}
+                setMovieRangeSearchValue={(searchValue: string) => {
+                    searchValueState = searchValue;
+                }}
+            />
+        );
+        expect(listOfSearchValues).not.toBeInTheDocument();
+    });
 });

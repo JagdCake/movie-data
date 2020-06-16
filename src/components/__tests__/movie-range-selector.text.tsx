@@ -41,7 +41,7 @@ describe('Movie range selector component', () => {
     it('should set search value on search box focus', () => {
         let searchValueState = '';
 
-        render(
+        const { getByLabelText } = render(
             <MovieRangeSelector
                 listOfRanges={[['', '']]}
                 movieRangeSearchValue=""
@@ -51,13 +51,13 @@ describe('Movie range selector component', () => {
             />
         );
 
-        const searchBox: HTMLInputElement = document.querySelector(
-            '#movie-range-search'
-        ) as HTMLInputElement;
-
         expect(searchValueState).toEqual('');
 
+        const searchBox: HTMLInputElement = getByLabelText(
+            'search box'
+        ) as HTMLInputElement;
         searchBox.focus();
+
         expect(searchValueState).toEqual(' ');
     });
 

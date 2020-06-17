@@ -5,7 +5,7 @@ article[id]:target {
 }
 
 svg {
-    animation-duration: 0.5s;
+    animation-duration: 2.5s;
     animation-name: slidein;
 }
 

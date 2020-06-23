@@ -56,3 +56,59 @@ BEGIN;
         raise info '%', success_message;
     END $$ LANGUAGE 'plpgsql';
 ROLLBACK;
+
+-- Test movie_range_of_movie_dates
+BEGIN;
+    drop trigger prevent_deleting_older_movies on movie;
+    delete from movie
+    where id not in (
+        select id
+        from movie
+        where watched_on = '01 Jun 2016'
+        or watched_on = '16 Jun 2016'
+        or watched_on = '21 Jul 2016'
+        or watched_on = '23 Jul 2016'
+        or watched_on = '05 Aug 2016'
+        or watched_on = '09 Aug 2016'
+    );
+
+    DO $$
+        declare got text;
+        declare expected text;
+        declare header_message text;
+        declare failure_message text;
+        declare success_message text;
+    BEGIN
+        select movie_range_of_movie_dates(
+            (select movie from movie limit 1),
+            3 -- 3 movies
+        ) into got;
+
+        -- expecting a range of 4 movies from "21 Jul 2016" because
+        -- there aren't enough movies for another range of 3 from "05
+        -- Aug 2016"
+        select '{01 Jun 2016, 21 Jul 2016, 09 Aug 2016}'::text[] into expected;
+
+        select
+        E'\nTEST movie_range_of_movie_dates '
+        into header_message;
+
+        select
+        header_message
+        || 'FAIL'
+        || E'\n\tGot: "'
+        || got
+        || E'"\n\tExpected: "'
+        || expected
+        || '"' into failure_message;
+
+        assert got = expected, failure_message;
+
+        select
+        header_message
+        || 'PASS'
+        into success_message;
+
+        raise info '%', success_message;
+    END $$ LANGUAGE 'plpgsql';
+ROLLBACK;

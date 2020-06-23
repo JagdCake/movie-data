@@ -16,6 +16,10 @@ different time periods.
     - create a database for the movies `psql -d [DATABASE USER] -c "create database [DATABASE NAME]"`
     - extract the database dump `tar -xavf database_dump.movies.tar.xz`
     - import the database dump `psql -U [DATABASE USER] -d [DATABASE NAME] < movies_dump`
+    - create a testing database `psql -d [DATABASE USER] -c "create database test_[DATABASE NAME] with template [DATABASE NAME]"`
+        - open [package.json](./package.json) and update
+          `"test-db": "psql -d test_[DATABASE NAME] -f database-functions.test.sql"`
+          in the `"scripts"` section
     - open [gatsby-config.js](./gatsby-config.js) and update
       `connectionString: postgres:///[DATABASE NAME]` in the
       `gatsby-source-pg` options

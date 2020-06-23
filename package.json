@@ -60,6 +60,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "jest",
+    "test-db": "psql -d test_movies -f database-functions.test.sql",
     "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx",
     "deploy": "npm test && gatsby clean && gatsby build && cp CNAME ./public/ && gh-pages -d public"
   },

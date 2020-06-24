@@ -112,3 +112,60 @@ BEGIN;
         raise info '%', success_message;
     END $$ LANGUAGE 'plpgsql';
 ROLLBACK;
+
+-- Test movie_genres_or_ratings_and_their_counts_in_the_range
+-- (genres)
+BEGIN;
+    drop trigger prevent_deleting_older_movies on movie;
+    -- delete all movies besides 2 action movies and 1 horror using
+    -- movies whose titles make their genres obvious
+    delete from movie
+    where id not in (
+        select id
+        from movie
+        where title = 'Mad Max: Fury Road'
+        or title = 'Die Hard'
+        or title = 'The Thing'
+    );
+
+    DO $$
+        declare function_output json;
+        declare got text;
+        declare expected text;
+        declare header_message text;
+        declare failure_message text;
+        declare success_message text;
+    BEGIN
+        select movie_genres_or_ratings_and_their_counts_in_the_range(
+            (select movie from movie limit 1),
+            ARRAY['01 Jun 2016', '31 Dec 2099'],
+            'genre',
+            2 -- 2 genre, count tuples
+        ) into function_output;
+
+        select function_output::text into got;
+        select '[["Action","2"],["Horror","1"]]' into expected;
+
+        select
+        E'\nTEST movie_genres_or_ratings_and_their_counts_in_the_range '
+        into header_message;
+
+        select
+        header_message
+        || 'FAIL'
+        || E'\n\tGot: "'
+        || got
+        || E'"\n\tExpected: "'
+        || expected
+        || '"' into failure_message;
+
+        assert got = expected, failure_message;
+
+        select
+        header_message
+        || 'PASS'
+        into success_message;
+
+        raise info '%', success_message;
+    END $$ LANGUAGE 'plpgsql';
+ROLLBACK;

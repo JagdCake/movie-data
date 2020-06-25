@@ -279,3 +279,67 @@ BEGIN;
         raise info '%', success_message;
     END $$ LANGUAGE 'plpgsql';
 ROLLBACK;
+
+-- Test movie_runtime_and_title_of_movie_of_specific_length_in_the_rang
+BEGIN;
+    drop trigger prevent_deleting_older_movies on movie;
+    -- delete all movies besides one that's long, and one that's shorter
+    delete from movie
+    where id not in (
+        select id
+        from movie
+        where title = 'The Host'
+        and runtime = 120
+        or title = 'Kung Fu Panda 2'
+        and runtime = 90
+    );
+
+    DO $$
+        declare possible_movie_lengths text[];
+        declare possible_movies text[];
+        declare random_movie_length_index int;
+        declare function_output text[];
+        declare got text;
+        declare expected text;
+        declare header_message text;
+        declare failure_message text;
+        declare success_message text;
+    BEGIN
+        select '{longest,shortest,average}' into possible_movie_lengths;
+        -- the average of 120 (2:0) and 90 (1:30) is 105 (1:45) but
+        -- there is movie of that length
+        select ARRAY['{"The Host",2:0}','{"Kung Fu Panda 2",1:30}','{"",1:45}'] into possible_movies;
+        select floor(random() * 3 + 1) into random_movie_length_index;
+
+        select movie_runtime_and_title_of_movie_of_specific_length_in_the_rang(
+            (select movie from movie limit 1),
+            ARRAY['01 Jun 2016', '31 Dec 2099'],
+            possible_movie_lengths[random_movie_length_index]
+        ) into function_output;
+
+        select function_output::text into got;
+        select possible_movies[random_movie_length_index] into expected;
+
+        select
+        E'\nTEST movie_runtime_and_title_of_movie_of_specific_length_in_the_rang '
+        into header_message;
+
+        select
+        header_message
+        || 'FAIL'
+        || E'\n\tGot: "'
+        || got
+        || E'"\n\tExpected: "'
+        || expected
+        || '"' into failure_message;
+
+        assert got = expected, failure_message;
+
+        select
+        header_message
+        || 'PASS'
+        into success_message;
+
+        raise info '%', success_message;
+    END $$ LANGUAGE 'plpgsql';
+ROLLBACK;

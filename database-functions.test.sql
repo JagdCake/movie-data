@@ -221,3 +221,61 @@ BEGIN;
         raise info '%', success_message;
     END $$ LANGUAGE 'plpgsql';
 ROLLBACK;
+
+-- Test movie_names_and_counts_of_principals_in_the_range
+-- (directors)
+BEGIN;
+    drop trigger prevent_deleting_older_movies on movie;
+    -- delete all movies besides 5 whose titles make their directors obvious
+    delete from movie
+    where id not in (
+        select id
+        from movie
+        where title = 'Mulholland Dr.'
+        or title = 'The Lord of the Rings: The Fellowship of the Ring'
+        or title = 'The Lord of the Rings: The Two Towers'
+        or title = 'The Lord of the Rings: The Return of the King'
+        or title = 'The Dark Knight'
+    );
+
+    DO $$
+        declare function_output json;
+        declare got text;
+        declare expected text;
+        declare header_message text;
+        declare failure_message text;
+        declare success_message text;
+    BEGIN
+        select movie_names_and_counts_of_principals_in_the_range(
+            (select movie from movie limit 1),
+            ARRAY['01 Jun 2016', '31 Dec 2099'],
+            'directors',
+            5 -- 5 name, count tuples
+        ) into function_output;
+
+        select function_output::text into got;
+        select '[["Peter Jackson","3"],["Christopher Nolan","1"],["David Lynch","1"]]' into expected;
+
+        select
+        E'\nTEST movie_names_and_counts_of_principals_in_the_range '
+        into header_message;
+
+        select
+        header_message
+        || 'FAIL'
+        || E'\n\tGot: "'
+        || got
+        || E'"\n\tExpected: "'
+        || expected
+        || '"' into failure_message;
+
+        assert got = expected, failure_message;
+
+        select
+        header_message
+        || 'PASS'
+        into success_message;
+
+        raise info '%', success_message;
+    END $$ LANGUAGE 'plpgsql';
+ROLLBACK;

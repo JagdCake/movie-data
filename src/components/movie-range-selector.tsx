@@ -48,7 +48,7 @@ const MovieRangeList: FunctionComponent<MovieRangeListProps> = ({
     return truncatedMovieRanges.map(([startRange, endRange]) => (
         <li key={startRange + endRange} className="my-2">
             <Link
-                to={`${isoDate(startRange)}_until_${isoDate(endRange)}`}
+                to={`/${isoDate(startRange)}_until_${isoDate(endRange)}`}
                 className="p-2 rounded-sm hover:bg-purple hover:text-gray focus:bg-purple focus:text-gray"
             >
                 {`${startRange} - ${endRange}`}
